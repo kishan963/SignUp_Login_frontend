@@ -9,7 +9,7 @@ const ContactDetail = ()=>{
          navigate("/");
     }
 
-    return (
+    return ( 
          <div className="main" >
             <div className="ui card centered">
                 <div className="image" >

@@ -9,23 +9,26 @@ const PrivateRoute =()=> {
     let auth= {'token' : false}
     const navigate= useNavigate();
     const location = useLocation();
-   // const [getJwtToken] = useLogIn();
-    console.log(location);
+   
     const jwtToken = localStorage.getItem('token');
-    console.log(jwtToken);
-    const helper = async () => {
-        //console.log(getJwtToken);
+   
+   
           const jwt = `Bearer ${jwtToken}`;   
           console.log(jwt);
           const headers = new Headers({
             "Content-Type": "application/json",
             "Authorization": jwt
           });
-
-          const response = await fetch('http://localhost:8080/api/get', {
+          
+          try{
+          const response = fetch('http://localhost:8080/api/get', {
             method: 'POST',
             headers
           });
+          return (<ContactDetail> location.state.Contact </ContactDetail> )
+         } catch {
+          navigate("/login", { replace: true });
+         }
         
 
           // try {
@@ -37,18 +40,19 @@ const PrivateRoute =()=> {
           //   console.error('Error:', error);
           // }
 
-         console.log(response.ok);
-          if (response.ok) {
-            return (<ContactDetail> location.state.Contact </ContactDetail> )
-          }
-          else
-          {
-            navigate("/login", { replace: true });
-          }
-    }; 
+        //  console.log(response);
+        //  console.log(location.state.Contact);
+        //   if (response.ok) {
+        //     return (<ContactDetail> location.state.Contact </ContactDetail> )
+        //   }
+        //   else
+        //   {
+        //     navigate("/login", { replace: true });
+        //   }
+    
      
     
-    helper();
+   
     
 };
 
