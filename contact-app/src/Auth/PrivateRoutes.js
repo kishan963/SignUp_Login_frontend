@@ -21,7 +21,7 @@ const PrivateRoute =()=> {
           });
           
           try{
-          const response = fetch('http://localhost:8080/api/get', {
+          const response = fetch('https://signuploginbackend-production.up.railway.app/api/get', {
             method: 'POST',
             headers
           });
